@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -45,13 +46,15 @@ public class MainActivity extends AppCompatActivity {
     int nomor = 0;
     public static int hasil, benar, salah;
     public static MediaPlayer mediaPlayer;
+    ProgressBar progress;
     ListView list;
 
     String[] pertanyaan_kuis = new String[]{
             "1. salah satu personil snsd yang keluar dari groupnya pada tahun 2014, dan saya merasa sangat sedih adalah?",
             "2. Siapakah biasku di DBSK?",
             "3. Yang Bukan Anggota Blackpink antara lain?",
-            "4. Aku harus nyanyi lagu apa hari minggu?"
+            "4. Aku harus nyanyi lagu apa hari minggu?",
+            "5. ITZY adalah salah satu girlsband naungan agensi?"
     };
 
     String[] jawaban_kuis = new String[]{
@@ -59,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
             "Junsu", "Yunho", "Jaejoong", "Changmin",
             "Jennie", "Lisa", "Rose", "Jia",
             "kada tahu", "molla", "terserah", "apa aja deh boleh",
+            "YG","JYP","SM","Starship",
     };
 
     String[] jawaban_benar = new String[]{
@@ -66,15 +70,16 @@ public class MainActivity extends AppCompatActivity {
             "Junsu",
             "Jia",
             "molla",
+            "JYP",
     };
     int[] suaraSoal = new int[]{
-            R.raw.q_satu,
+
             R.raw.q_dua,
             R.raw.q_tiga,
             R.raw.q_empat
     };
-    int [] suaraSoalSatu = new int[]{
-
+    int[] suaraSoalSatu = new int[]{
+            R.raw.q_satu
     };
 
 
@@ -91,9 +96,33 @@ public class MainActivity extends AppCompatActivity {
         rbPilihanC.setText(jawaban_kuis[2]);
         rbPilihanD.setText(jawaban_kuis[3]);
 
-        playSound(nomor);
+        //menyembunyikan progresbar
+
+        progress.setVisibility(View.INVISIBLE);
+        progress.setIndeterminate(true);
+        playVoiceSatu();
+
+    }
+
+    private void playVoiceSatu() {
+        try {
+            if (mediaPlayer.isPlaying()) {
+                mediaPlayer.stop();
+            }
+            {
+                mediaPlayer.reset();
+                mediaPlayer.release();
+                mediaPlayer = null;
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, "Masuk Exception", Toast.LENGTH_SHORT).show();
+        }
 
 
+        mediaPlayer = MediaPlayer.create(this, suaraSoalSatu[0]);
+
+        mediaPlayer.setLooping(false);
+        mediaPlayer.start();
     }
 
     @Override
@@ -123,7 +152,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-
         if (nomor < pertanyaan_kuis.length) {
             mediaPlayer = MediaPlayer.create(this, suaraSoal[nomor]);
         }
@@ -135,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void next() {
 
-        playSound(nomor);
+//        playSound(nomor);
 
 
         RadioButton jawabanUser = (RadioButton) findViewById(rgPilihan.getCheckedRadioButtonId());

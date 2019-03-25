@@ -31,7 +31,7 @@ public class HasilKuis extends AppCompatActivity {
     @OnClick(R.id.btn_ulangi)
     public void onViewClicked() {
         finish();
-        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        Intent i = new Intent(getApplicationContext(), Listening.class);
         startActivity(i);
     }
 }
