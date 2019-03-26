@@ -97,15 +97,19 @@ public class Listening extends AppCompatActivity {
 
         playVoiceSatu();
 
-        hide();
+//        hide();
 
     }
 
     private void hide() {
+
+
         if (pertanyaan_kuis[nomor] != null) {
-            btnStopNew.setVisibility(View.GONE);
-        }else {
             btnPlayNew.setVisibility(View.GONE);
+            btnStopNew.setVisibility(View.INVISIBLE);
+        }else {
+            btnStopNew.setVisibility(View.GONE);
+            btnPlayNew.setVisibility(View.VISIBLE);
         }
     }
 
@@ -210,7 +214,6 @@ public class Listening extends AppCompatActivity {
                     rbPilihanBNew.setText(jawaban_kuis[(nomor * 4) + 1]);
                     rbPilihanCNew.setText(jawaban_kuis[(nomor * 4) + 2]);
                     rbPilihanDNew.setText(jawaban_kuis[(nomor * 4) + 3]);
-
                 } else {
                     hasil = benar * 20;
                     Intent hasil = new Intent(getApplicationContext(), HasilKuis.class);
