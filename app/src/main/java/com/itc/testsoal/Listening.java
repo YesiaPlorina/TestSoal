@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -43,7 +44,7 @@ public class Listening extends AppCompatActivity {
     int nomor = 0;
     public static int hasil, benar, salah;
     public static MediaPlayer mediaPlayer;
-
+    ProgressBar progress;
     String[] pertanyaan_kuis = new String[]{
             "1. salah satu personil snsd yang keluar dari groupnya pada tahun 2014, dan saya merasa sangat sedih adalah?",
             "2. Siapakah biasku di DBSK?",
@@ -95,6 +96,17 @@ public class Listening extends AppCompatActivity {
 
 
         playVoiceSatu();
+
+        hide();
+
+    }
+
+    private void hide() {
+        if (pertanyaan_kuis[nomor] != null) {
+            btnStopNew.setVisibility(View.GONE);
+        }else {
+            btnPlayNew.setVisibility(View.GONE);
+        }
     }
 
     private void playVoiceSatu() {
@@ -180,7 +192,9 @@ public class Listening extends AppCompatActivity {
 
     @OnClick({R.id.btn_play_new, R.id.btn_stop_new})
     public void onViewClicked(View view) {
+
         switch (view.getId()) {
+
             case R.id.btn_play_new:
                 next();
                 break;
@@ -198,7 +212,7 @@ public class Listening extends AppCompatActivity {
                     rbPilihanDNew.setText(jawaban_kuis[(nomor * 4) + 3]);
 
                 } else {
-                    hasil = benar * 25;
+                    hasil = benar * 20;
                     Intent hasil = new Intent(getApplicationContext(), HasilKuis.class);
                     startActivity(hasil);
                 }
@@ -206,4 +220,6 @@ public class Listening extends AppCompatActivity {
                 break;
         }
     }
+
+
 }

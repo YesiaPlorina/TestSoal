@@ -24,8 +24,8 @@ public class HasilKuis extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hasil_kuis);
         ButterKnife.bind(this);
-        tvHasil.setText("Jawaban Benar : " + MainActivity.benar + "\n Jawaban Salah : " + MainActivity.salah);
-        tvNilai.setText("" + MainActivity.hasil);
+        tvHasil.setText("Jawaban Benar : " + Listening.benar + "\n Jawaban Salah : " + Listening.salah);
+        tvNilai.setText("" + Listening.hasil);
     }
 
     @OnClick(R.id.btn_ulangi)

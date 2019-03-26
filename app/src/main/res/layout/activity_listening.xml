@@ -13,11 +13,11 @@
         tools:ignore="MissingConstraints">
 
         <ImageView
+            android:id="@+id/iv_soal_new"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
-            android:id="@+id/iv_soal_new"
-            android:src="@drawable/ic_launcher_background" />
+            android:src="@drawable/ic_launcher_foreground"/>
 
         <TextView
             android:id="@+id/tv_soal_new"
@@ -27,51 +27,52 @@
             android:text="Pertanyaan" />
 
         <RadioGroup
-            android:layout_width="wrap_content"
             android:id="@+id/rg_pilihan_new"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp">
 
             <RadioButton
-                android:layout_width="wrap_content"
                 android:id="@+id/rb_pilihan_a_new"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pilihan A"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="5dp" />
 
             <RadioButton
+                android:id="@+id/rb_pilihan_b_new"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pilihan B"
-                android:id="@+id/rb_pilihan_b_new"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="5dp" />
 
             <RadioButton
+                android:id="@+id/rb_pilihan_c_new"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pilihan C"
-                android:id="@+id/rb_pilihan_c_new"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="5dp" />
 
             <RadioButton
+                android:id="@+id/rb_pilihan_d_new"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pilihan D"
-                android:id="@+id/rb_pilihan_d_new"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="5dp" />
         </RadioGroup>
 
 
         <TextView
+            android:id="@+id/tv_penjelasan_new"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:id="@+id/tv_penjelasan_new"
             android:text="Penjelasan" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
