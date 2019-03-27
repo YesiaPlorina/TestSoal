@@ -172,6 +172,7 @@ public class Listening extends AppCompatActivity {
     public void next() {
 
         playSound(nomor);
+
         if (rbPilihanANew.isChecked() || rbPilihanBNew.isChecked() || rbPilihanCNew.isChecked() || rbPilihanDNew.isChecked()) {
 
             RadioButton jawabanUser = (RadioButton) findViewById(rgPilihanNew.getCheckedRadioButtonId());
@@ -179,6 +180,7 @@ public class Listening extends AppCompatActivity {
             if (ambilJawabanUser.equalsIgnoreCase(jawaban_benar[nomor])) benar++;
             else salah++;
             nomor++;
+
             if (nomor < pertanyaan_kuis.length) {
                 tvSoalNew.setText(pertanyaan_kuis[nomor]);
                 rbPilihanANew.setText(jawaban_kuis[(nomor * 4) + 0]);
@@ -191,7 +193,9 @@ public class Listening extends AppCompatActivity {
                 Intent hasil = new Intent(getApplicationContext(), HasilKuis.class);
                 startActivity(hasil);
             }
+
         } else {
+            playVoiceSatu();
             Toast.makeText(this, "Kamu Jawab Dulu", Toast.LENGTH_LONG).show();
         }
 
@@ -206,28 +210,27 @@ public class Listening extends AppCompatActivity {
             case R.id.btn_play_new:
                 next();
                 break;
+
             case R.id.btn_stop_new:
-                if (rbPilihanANew.isChecked() || rbPilihanBNew.isChecked() || rbPilihanCNew.isChecked() || rbPilihanDNew.isChecked()) {
 
-                    RadioButton jawabanUser = (RadioButton) findViewById(rgPilihanNew.getCheckedRadioButtonId());
-                    String ambilJawabanUser = jawabanUser.getText().toString();
-                    if (ambilJawabanUser.equalsIgnoreCase(jawaban_benar[nomor])) benar++;
-                    else salah++;
-                    nomor++;
-                    if (nomor < pertanyaan_kuis.length) {
-                        tvSoalNew.setText(pertanyaan_kuis[nomor]);
-                        rbPilihanANew.setText(jawaban_kuis[(nomor * 4) + 0]);
-                        rbPilihanBNew.setText(jawaban_kuis[(nomor * 4) + 1]);
-                        rbPilihanCNew.setText(jawaban_kuis[(nomor * 4) + 2]);
-                        rbPilihanDNew.setText(jawaban_kuis[(nomor * 4) + 3]);
 
-                    } else {
-                        hasil = benar * 25;
-                        Intent hasil = new Intent(getApplicationContext(), HasilKuis.class);
-                        startActivity(hasil);
-                    }
+                RadioButton jawabanUser = (RadioButton) findViewById(rgPilihanNew.getCheckedRadioButtonId());
+                String ambilJawabanUser = jawabanUser.getText().toString();
+                if (ambilJawabanUser.equalsIgnoreCase(jawaban_benar[nomor])) benar++;
+                else salah++;
+                nomor++;
+
+                if (nomor < pertanyaan_kuis.length) {
+                    tvSoalNew.setText(pertanyaan_kuis[nomor]);
+                    rbPilihanANew.setText(jawaban_kuis[(nomor * 4) + 0]);
+                    rbPilihanBNew.setText(jawaban_kuis[(nomor * 4) + 1]);
+                    rbPilihanCNew.setText(jawaban_kuis[(nomor * 4) + 2]);
+                    rbPilihanDNew.setText(jawaban_kuis[(nomor * 4) + 3]);
+
                 } else {
-                    Toast.makeText(this, "Kamu Jawab Dulu", Toast.LENGTH_LONG).show();
+                    hasil = benar * 25;
+                    Intent hasil = new Intent(getApplicationContext(), HasilKuis.class);
+                    startActivity(hasil);
                 }
 
 
